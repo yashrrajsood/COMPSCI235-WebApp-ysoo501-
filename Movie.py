@@ -82,7 +82,6 @@ class Movie:
         return other_movie._title == self._title and other_movie._release_date == self._release_date
 
     def __lt__(self, other_movie):
-        #return self._title < other_movie._title and self._release_date < other_movie._release_date
         return (self._title, self._release_date) < (other_movie._title, other_movie._release_date)
 
     def __hash__(self):
