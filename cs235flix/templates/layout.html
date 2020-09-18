@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cs235flix</title>
+
+
+  </head>
+
+  <style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+
+  body {margin:0;}
+
+    .navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 120%;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .navbar h3 {
+    float: left;
+    font-family: 'Orbitron', sans-serif;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 26px;
+  }
+
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
+
+  .main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+  }
+
+  </style>
+
+  <body>
+    <div class="navbar">
+      <h3>CS235FLIX</h3>
+      <br/> <br/>
+      <h3></h3>
+      <a href="#home">Home</a>
+      <a href="#genres">Genres</a>
+      <a href="#watchlist">Watchlist</a>
+
+    </div>
+    <br/>
+    <br/>
+    <div id="container">
+          <!-- Main content block to be supplied by page. -->
+          {% block content %} {% endblock %}
+    </div>
+  </body>
+</html>
