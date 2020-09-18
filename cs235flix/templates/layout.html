@@ -61,14 +61,14 @@
       <h3>CS235FLIX</h3>
       <br/> <br/>
       <h3></h3>
-      <a href="#home">Home</a>
+      <a href={{ url_for('home_bp.home') }}>Home</a>
       <a href="#genres">Genres</a>
       <a href="#watchlist">Watchlist</a>
 
     </div>
-    <br/>
-    <br/>
+    <br/> <br/>
     <div id="container">
+      <br/><br/><br/><br/><br/>
           <!-- Main content block to be supplied by page. -->
           {% block content %} {% endblock %}
     </div>

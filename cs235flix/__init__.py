@@ -32,4 +32,7 @@ def create_app(test_config=None):
         # Register blueprints.
         from cs235flix.home import home
         app.register_blueprint(home.home_blueprint)
+
+        from cs235flix.movie import movie
+        app.register_blueprint(movie.movie_blueprint)
     return app

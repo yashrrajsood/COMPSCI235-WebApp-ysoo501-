@@ -1,18 +1,14 @@
-'''
-
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 import cs235flix.utilities.utilities as utilities
 
 movie_blueprint = Blueprint('movie_bp', __name__)
 
 
-@movie_blueprint.route('/movies_by_rank', methods=['GET'])
-def movies_by_rank():
-    return render_template('templates/movies/movie.html', movies_by_rank=utilities.get_movies_by_rank())
+@movie_blueprint.route('/movie/', methods=['GET'])
+def load_movie():
+    temp_title = request.args.get('title')
+    temp_date = request.args.get('date')
+    return render_template('movies/movies.html', movie=utilities.get_movie_from_title(temp_title, temp_date))
 
 
-@movie_blueprint.route('/all_movies', methods=['GET'])
-def all_movies():
-    return render_template('templates/movies/movie.html', all_movies=utilities.get_movies())
-'''

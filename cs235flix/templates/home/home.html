@@ -54,15 +54,14 @@ h4 {
 }
 
 </style>
+  <h1>Top Movies</h1>
 
-  <h1>All Available Movies</h1>
-
-    {% for movie in all_movies %}
+    {% for i in range(0,8) %}
         <div class="column">
             <div class="card">
                 <h4>
-                    {{ movie._title }}
-                    <p>({{ movie._release_date }})</p>
+                    {{ all_movies[i]._title }}
+                    <p>({{ all_movies[i]._release_date }})</p>
                 </h4>
             </div>
             <br/>

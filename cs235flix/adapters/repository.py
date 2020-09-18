@@ -56,5 +56,9 @@ class AbstractRepository(abc.ABC):
     def get_actors(self):
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def get_movie_by_name(self, title, date):
+        raise NotImplementedError
+
 
 

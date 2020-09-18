@@ -48,6 +48,12 @@ class MemoryRepository(AbstractRepository):
         temp = sorted(self._movies, key=lambda x: x.rank)
         return temp
 
+    def get_movie_by_name(self, title, date):
+        value = None
+        for movie in list(self._movies):
+            if movie.title == title and movie._release_date == date:
+                value = movie
+        return list(self._movies)[0]
 
 
 def read_csv_file(filename: str):

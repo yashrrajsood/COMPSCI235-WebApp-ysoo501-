@@ -45,21 +45,10 @@ body {
 }
 
 </style>
-
-  <h1>All Available Movies</h1>
-
-    {% for movie in movies_by_rank %}
-        <div class="column">
-            <div class="card">
-                <h4>
-                    {{ movie._title }}
-                    <p>({{ movie._release_date }})</p>
-                </h4>
-            </div>
-            <br/>
-        </div>
-    {% endfor %}
-
+{%if movie != None:%}
+  <h1>{{ movie._title }}<h2>
+      <h1>{{ movie._release_date }}<h2>
+{% endif %}
 
 </main>
 {% endblock %}
