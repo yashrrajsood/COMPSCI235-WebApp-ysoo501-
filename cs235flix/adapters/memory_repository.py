@@ -8,7 +8,7 @@ from cs235flix.domain.model import User, Actor, Genre, Movie, Director
 class MemoryRepository(AbstractRepository):
 
     def __init__(self):
-        self._movies = set(list())
+        self._movies = list()
         self._users = set(list())
         self._genres = set(list())
         self._directors = set(list())
@@ -21,7 +21,7 @@ class MemoryRepository(AbstractRepository):
         raise NotImplementedError
 
     def add_movie(self, movie: Movie):
-        self._movies.add(movie)
+        self._movies += [movie]
 
     def get_all_movies(self):
         return self._movies
@@ -49,11 +49,11 @@ class MemoryRepository(AbstractRepository):
         return temp
 
     def get_movie_by_name(self, title, date):
-        value = None
-        for movie in list(self._movies):
-            if movie.title == title and movie._release_date == date:
-                value = movie
-        return list(self._movies)[0]
+        temp_movie = Movie(None, title, date, None, None, None, None, None, None)
+        if temp_movie in self._movies:
+            return self._movies[self._movies.index(temp_movie)]
+        else:
+            return None
 
 
 def read_csv_file(filename: str):

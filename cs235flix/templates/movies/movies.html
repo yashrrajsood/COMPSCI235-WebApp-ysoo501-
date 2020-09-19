@@ -2,53 +2,83 @@
 {% extends 'layout.html' %} {% block content %}
 <main id="main">
     <style>
-        * {
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,900&display=swap');
+
+    * {
   box-sizing: border-box;
-}
+    }
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 100px;
+        margin-left: 30px;
+        margin-top: -10px;
+    }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+    h4 {
+        font-family: 'Barlow', sans-serif;
+        margin-left: 30px;
+        margin-top: -90px;
+    }
 
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-}
+    h5 {
+        margin-left: 30px;
+        font-size: 18px;
+    }
 
-/* Remove extra left and right margins, due to padding in columns */
-.row {margin: 0 -5px;}
+    p {
+        margin-left: 30px;
+        margin-top: -20px
+    }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
+    /* Float four columns side by side */
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 10px;
+    }
 
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {margin: 0 -5px;}
 
-</style>
-{%if movie != None:%}
-  <h1>{{ movie._title }}<h2>
-      <h1>{{ movie._release_date }}<h2>
-{% endif %}
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
+    /* Style the counter cards */
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+    }
+
+    /* Responsive columns - one column layout (vertical) on small screens */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+
+    </style>
+    <body>
+        {% if movie != None %}
+
+            <h1>{% print(movie.title) %}</h1>
+            <h4>({% print(movie.release_date) %})</h4>
+            <hr>
+            <h5>Description:</h5>
+            <p>{% print(movie.description) %}</p>
+        {% endif %}
+    </body>
 </main>
 {% endblock %}

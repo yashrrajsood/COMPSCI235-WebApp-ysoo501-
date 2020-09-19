@@ -193,6 +193,10 @@ class Movie:
             self._rating = None
 
     @property
+    def release_date(self):
+        return self._release_date
+
+    @property
     def votes(self) -> int:
         return self._votes
 
@@ -423,3 +427,15 @@ class ModelException(Exception):
     pass
 
 
+
+'''
+temp = Movie(1, "Guardians of the Galaxy", 2014, None, None, None, None, None, None)
+temp2 = Movie(2, "Sing", 2016, None, None, None, None, None, None)
+temp3= Movie(8, "Mindhorn", 2016, None, None, None, None, None, None)
+
+all_movies = [temp, temp2, temp3]
+
+to_find = Movie(2, "Guardians of the Galaxy", 2014, "Lmao", 100, 30, 30000, 200, 10)
+if to_find in all_movies:
+    print(all_movies[all_movies.index(to_find)])
+'''
