@@ -3,7 +3,7 @@ from datetime import datetime
 
 class User:
     def __init__(self, user_name, password):
-        self._user_name = user_name.strip().lower()
+        self._username = user_name.strip().lower()
         self._password = password
         self._watched_movies = []
         self._reviews = []
@@ -11,7 +11,7 @@ class User:
 
     @property
     def user_name(self):
-        return self._user_name
+        return self._username
 
     @property
     def password(self):

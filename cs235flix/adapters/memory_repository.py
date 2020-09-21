@@ -4,21 +4,22 @@ import os
 from cs235flix.adapters.repository import AbstractRepository, RepositoryException
 from cs235flix.domain.model import User, Actor, Genre, Movie, Director
 
+from werkzeug.security import generate_password_hash
 
 class MemoryRepository(AbstractRepository):
 
     def __init__(self):
         self._movies = list()
-        self._users = set(list())
+        self._users = list()
         self._genres = list()
         self._directors = set(list())
         self._actors = set(list())
 
     def add_user(self, user: User):
-        self._users.add(user)
+        self._users.append(user)
 
     def get_user(self, username) -> User:
-        raise NotImplementedError
+        return next((user for user in self._users if user._username == username), None)
 
     def add_movie(self, movie: Movie):
         self._movies += [movie]
@@ -141,7 +142,22 @@ def load_movies(data_path: str, repo: MemoryRepository):
 
         repo.add_movie(movie)
 
+def load_users(data_path: str, repo: MemoryRepository):
+    users = dict()
+
+    for data_row in read_csv_file(os.path.join(data_path, 'users.csv')):
+        user = User(
+            username=data_row[1],
+            password=generate_password_hash(data_row[2])
+        )
+        repo.add_user(user)
+        users[data_row[0]] = user
+    return users
+
 
 def populate(data_path: str, repo: MemoryRepository):
     # Loading all movies, directors and actors
     load_movies(data_path, repo)
+    load_users(data_path, repo)
+    users = load_users(data_path, repo)
+

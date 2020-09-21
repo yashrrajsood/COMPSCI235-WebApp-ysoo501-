@@ -91,6 +91,37 @@
     padding-bottom: 100px;
   }
 
+  #Register {
+    border: 1px solid white;
+    height: 50px
+    margin: 0px;
+
+  }
+
+  #Register2 {
+    border: 1px solid white;
+    height: 50px
+    margin: 0px;
+    margin-left: 790px;
+
+  }
+
+  #login {
+    border: 1px solid white;
+    height: 50px
+  }
+
+  #logout {
+    border: 1px solid white;
+    height: 50px;
+  }
+
+  #login_message {
+    margin-left: 600px;
+    color:white;
+    background: #333;
+  }
+
   </style>
 
   <body>
@@ -103,6 +134,20 @@
       <a href={{ url_for('genre_bp.get_list_of_genres') }}>Genres</a>
       <a href="#watchlist">Watchlist</a>
 
+      {% if 'username' in session %}
+      <a id="login_message">Logged in, {{ session['username'] }}</a>
+      {% endif %}
+      {% if 'username' in session %}
+      <a id="Register" href={{ url_for('authentication_bp.register') }}>Register</a>
+      {% else%}
+      <a id="Register2" href={{ url_for('authentication_bp.register') }}>Register</a>
+      {% endif %}
+      <a id="login" href={{ url_for('authentication_bp.login') }}>Login</a>
+      <a id="logout" href={{ url_for('authentication_bp.logout') }}>Logout</a>
+
+    </div>
+    <div class="navbar2">
+        <h3>Hello</h3>
     </div>
     <br/> <br/>
     <div id="container">

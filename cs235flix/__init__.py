@@ -44,4 +44,7 @@ def create_app(test_config=None):
 
         from cs235flix.director import director
         app.register_blueprint(director.director_blueprint)
+
+        from .authentication import authentication
+        app.register_blueprint(authentication.authentication_blueprint)
     return app
