@@ -35,4 +35,13 @@ def create_app(test_config=None):
 
         from cs235flix.movie import movie
         app.register_blueprint(movie.movie_blueprint)
+
+        from cs235flix.genre import genre
+        app.register_blueprint(genre.genre_blueprint)
+
+        from cs235flix.actor import actor
+        app.register_blueprint(actor.actor_blueprint)
+
+        from cs235flix.director import director
+        app.register_blueprint(director.director_blueprint)
     return app

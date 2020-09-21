@@ -10,7 +10,7 @@ class MemoryRepository(AbstractRepository):
     def __init__(self):
         self._movies = list()
         self._users = set(list())
-        self._genres = set(list())
+        self._genres = list()
         self._directors = set(list())
         self._actors = set(list())
 
@@ -27,10 +27,10 @@ class MemoryRepository(AbstractRepository):
         return self._movies
 
     def add_genre(self, genre: Genre):
-        self._genres.add(genre)
+        self._genres += [genre]
 
     def get_genres(self):
-        return self._genres
+        return sorted(self._genres)
 
     def get_directors(self):
         return self._directors
@@ -54,6 +54,35 @@ class MemoryRepository(AbstractRepository):
             return self._movies[self._movies.index(temp_movie)]
         else:
             return None
+
+    def get_genre_by_name(self, name):
+        for genre in self._genres:
+            if genre.genre_name == name:
+                return genre
+
+    def get_movies_by_genre(self, genre_name):
+        temp = []
+        temp_genre = Genre(genre_name)
+        for movie in self._movies:
+            if temp_genre in movie.genres:
+                temp += [movie]
+        return temp
+
+    def get_movies_by_actor(self, name):
+        temp = []
+        temp_actor = Actor(name)
+        for movie in self._movies:
+            if temp_actor in movie._actors:
+                temp += [movie]
+        return temp
+
+    def get_movies_by_director(self, name):
+        temp = []
+        temp_director = Director(name)
+        for movie in self._movies:
+            if temp_director == movie.director:
+                temp += [movie]
+        return temp
 
 
 def read_csv_file(filename: str):

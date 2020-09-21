@@ -97,9 +97,19 @@ class Genre:
         else:
             self._name = None
 
+        self._movie_list = []
+
     @property
     def genre_name(self) -> str:
         return self._name
+
+    @property
+    def movie_list(self):
+        return self._movie_list
+
+    def add_movie(self, movie):
+        if movie not in self._movie_list:
+            self._movie_list.append(movie)
 
     def __repr__(self) -> str:
         return f'<Genre {self._name}>'
@@ -168,7 +178,6 @@ class Movie:
         self._metascore = metascore
         self._director = None
         self._rank = rank
-
 
     @property
     def rank(self) -> int:
@@ -272,11 +281,12 @@ class Movie:
     @property
     def genres(self):
         return self._genres
-
+    '''
     @genres.setter
     def genres(self, val):
         if isinstance(val, list):
             self._genres = val
+    '''
 
     @property
     def runtime_minutes(self) -> int:
@@ -425,7 +435,6 @@ class PartyRoom:
 
 class ModelException(Exception):
     pass
-
 
 
 '''

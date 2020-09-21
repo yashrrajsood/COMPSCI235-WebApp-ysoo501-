@@ -3,6 +3,7 @@ from cs235flix.domain.model import User, Actor, Genre, Movie, Director
 
 repo_instance = None
 
+
 class RepositoryException(Exception):
 
     def __init__(self, message=None):
@@ -60,5 +61,18 @@ class AbstractRepository(abc.ABC):
     def get_movie_by_name(self, title, date):
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def get_genre_by_name(self, name):
+        raise NotImplementedError
 
+    @abc.abstractmethod
+    def get_movies_by_genre(self, genre_name):
+        raise NotImplementedError
 
+    @abc.abstractmethod
+    def get_movies_by_actor(self, name):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_movies_by_director(self, name):
+        raise NotImplementedError
