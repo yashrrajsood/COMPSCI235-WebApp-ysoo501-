@@ -56,3 +56,8 @@ def get_list_of_directors():
 def get_movies_by_director(name):
     list_movies = services.get_movies_by_director(repo.repo_instance, name)
     return list_movies
+
+
+def get_user_watchlist(user):
+    watch_list = services.get_user_watchlist(repo.repo_instance, user)
+    return watch_list

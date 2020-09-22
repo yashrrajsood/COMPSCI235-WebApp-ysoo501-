@@ -76,3 +76,7 @@ class AbstractRepository(abc.ABC):
     @abc.abstractmethod
     def get_movies_by_director(self, name):
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_user_watchlist(self, user):
+        raise NotImplementedError

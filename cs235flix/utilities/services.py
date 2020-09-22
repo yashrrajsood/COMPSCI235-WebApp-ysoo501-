@@ -49,3 +49,8 @@ def get_list_of_directors(repo: AbstractRepository):
 def get_movies_by_director(repo: AbstractRepository, name):
     list_movies = repo.get_movies_by_director(name)
     return list_movies
+
+
+def get_user_watchlist(repo: AbstractRepository, user):
+    watch_list = repo.get_user_watchlist(user)
+    return watch_list

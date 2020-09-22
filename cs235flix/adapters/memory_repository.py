@@ -85,6 +85,13 @@ class MemoryRepository(AbstractRepository):
                 temp += [movie]
         return temp
 
+    def get_user_watchlist(self, user):
+        for users in self._users:
+            if user == users.user_name:
+                return users.user_watchlist
+            else:
+                return None
+
 
 def read_csv_file(filename: str):
     with open(filename, encoding='utf-8-sig') as infile:

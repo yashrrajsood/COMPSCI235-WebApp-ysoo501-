@@ -8,10 +8,16 @@ class User:
         self._watched_movies = []
         self._reviews = []
         self._time_spent_watching_movies_minutes = 0
+        self._user_watchlist = WatchList()
+        WatchList.set_owner(self)
 
     @property
     def user_name(self):
         return self._username
+
+    @property
+    def user_watchlist(self):
+        return self._user_watchlist
 
     @property
     def password(self):
@@ -281,6 +287,7 @@ class Movie:
     @property
     def genres(self):
         return self._genres
+
     '''
     @genres.setter
     def genres(self, val):
@@ -360,6 +367,11 @@ class Director:
 class WatchList:
     def __init__(self):
         self._watch_list = []
+        self._owner = None
+
+    @property
+    def watchlist(self):
+        return self._watch_list
 
     def add_movie(self, movie):
         if movie not in self._watch_list and isinstance(movie, Movie):
@@ -368,6 +380,12 @@ class WatchList:
     def remove_movie(self, movie):
         if movie in self._watch_list:
             self._watch_list.remove(movie)
+
+    def set_owner(self, user):
+        self._owner = user
+
+    def get_owner(self):
+        return self._owner
 
     def select_movie_to_watch(self, index):
         if index in range(len(self._watch_list)):

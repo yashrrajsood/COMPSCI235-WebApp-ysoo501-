@@ -14,6 +14,7 @@ def home():
         genre_list=utilities.get_list_of_genres()
     )
 
+
 @home_blueprint.route('/all_movies', methods=['GET'])
 def all_movies():
     return render_template('home/all_movies.html', all_movies=utilities.get_movies_by_rank())

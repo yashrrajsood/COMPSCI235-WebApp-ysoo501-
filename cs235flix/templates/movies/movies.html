@@ -68,6 +68,9 @@
         margin-bottom: 20px;
       }
     }
+    #genre_list {
+
+    }
 
     </style>
     <body>
@@ -78,9 +81,17 @@
             <hr>
             <h5>Description:</h5>
             <p>{% print(movie.description) %}</p>
+        <div id="genre_section">
             <h5>Genres:</h5>
-            <p>{% print(movie.genres) %}</p>
-        {% endif %}
+            {% for element in movie.genres %}
+                <a href="/genre_movie?genre={{element.genre_name}}">
+                <p id="genre_list">{%print(element._name)%}</p>
+                </a>
+                <br/>
+            {%endfor%}
+        {%endif%}
+        </div>
+
     </body>
 </main>
 {% endblock %}
