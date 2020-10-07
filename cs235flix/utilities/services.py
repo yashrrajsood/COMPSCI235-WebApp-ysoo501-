@@ -52,5 +52,18 @@ def get_movies_by_director(repo: AbstractRepository, name):
 
 
 def get_user_watchlist(repo: AbstractRepository, user):
-    watch_list = repo.get_user_watchlist(user)
+    watch_list = repo.get_user(user)._user_watchlist.watchlist
     return watch_list
+
+
+def add_movie_to_watchlist(repo: AbstractRepository, user, movie, date):
+    repo.add_movie_to_watchlist(user, movie, date)
+
+
+def get_user(repo: AbstractRepository, username):
+    user = repo.get_user(username)
+    return user
+
+
+def remove_movie_from_watchlist(repo: AbstractRepository, user, movie, date):
+    repo.remove_movie_from_watchlist(user, movie, date)

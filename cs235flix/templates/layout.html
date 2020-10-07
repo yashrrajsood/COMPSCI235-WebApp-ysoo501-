@@ -133,9 +133,10 @@
       <a href={{ url_for('home_bp.home') }}>Home</a>
       <a href={{ url_for('home_bp.all_movies') }}>All Movies</a>
       <a href={{ url_for('genre_bp.get_list_of_genres') }}>Genres</a>
-      <a href="/watchlist?user={{username}}">Watchlist</a>
+
 
       {% if 'username' in session %}
+      <a href="/watchlist">Watchlist</a>
       <a id="login_message">Logged in, {{ session['username'] }}</a>
       {% endif %}
       {% if 'username' in session %}
@@ -152,7 +153,7 @@
     </div>
     <br/> <br/>
     <div id="container">
-      <br/><br/><br/><br/><br/>
+      <br/><br/>
           <!-- Main content block to be supplied by page. -->
           {% block content %} {% endblock %}
     </div>

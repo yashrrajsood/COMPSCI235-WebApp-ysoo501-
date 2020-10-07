@@ -61,3 +61,16 @@ def get_movies_by_director(name):
 def get_user_watchlist(user):
     watch_list = services.get_user_watchlist(repo.repo_instance, user)
     return watch_list
+
+
+def add_movie_to_watchlist(user, movie, date):
+    services.add_movie_to_watchlist(repo.repo_instance, user, movie, date)
+
+
+def get_user(username):
+    user = services.get_user(repo.repo_instance, username)
+    return user
+
+
+def remove_movie_from_watchlist(user, movie, date):
+    services.remove_movie_from_watchlist(repo.repo_instance, user, movie, date)

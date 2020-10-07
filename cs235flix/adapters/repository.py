@@ -80,3 +80,11 @@ class AbstractRepository(abc.ABC):
     @abc.abstractmethod
     def get_user_watchlist(self, user):
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def add_movie_to_watchlist(self, user, movie):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def remove_movie_from_watchlist(self, user, movie):
+        raise NotImplementedError

@@ -19,6 +19,10 @@ h4 {
 h1 {
     margin-left: 30px;
 }
+p {
+    margin-left: 30px;
+}
+
 
 /* Float four columns side by side */
 .column {
@@ -78,25 +82,35 @@ h1 {
 }
 
 </style>
+    {% if 'username' in session %}
   <h1>Watchlist</h1>
 
-    {% for element in watchlist: %}
-        <div class="column">
-            <div class="card">
-                <h4>
-                    <a href="/movie?title={{element._title}}&date={{element._release_date}}">
-                    {{ element._title }}
-                    <p>({{ element._release_date }})</p>
-                    </a>
-                </h4>
+    {% if watchlist_len != 0 %}
+        {% for element in watchlist: %}
+            <div class="column">
+                <div class="card">
+                    <h4>
+                        <a href="/movie?title={{element._title}}&date={{element._release_date}}">
+                        {{ element._title }}
+                        <p>({{ element._release_date }})</p>
+                        </a>
+                    </h4>
 
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No movies in watchlist!</p>
+    {% endif %}
     <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
+
+    {% else %}
+    <h1>Please log in or create an account to access your watchlist</h1>
+    {% endif %}
+
 </main>
 {% endblock %}

@@ -86,11 +86,25 @@ class MemoryRepository(AbstractRepository):
         return temp
 
     def get_user_watchlist(self, user):
-        for users in self._users:
-            if user == users.user_name:
-                return users.user_watchlist
-            else:
-                return None
+        temp_user = self.get_user(user)
+        if temp_user != None:
+            return temp_user._user_watchlist
+        else:
+            temp = Movie(1, "Guardians of the Galaxy", 2014, None, None, None, None, None, None)
+            temp2 = Movie(2, "Sing", 2016, None, None, None, None, None, None)
+            temp3 = Movie(8, "Mindhorn", 2016, None, None, None, None, None, None)
+            return [temp, temp3, temp2]
+
+    def add_movie_to_watchlist(self, user, movie, date):
+        temp_user = self.get_user(user)
+        temp_movie = self.get_movie_by_name(movie, date)
+        temp_user.user_watchlist.add_movie(temp_movie)
+
+    def remove_movie_from_watchlist(self, user, movie, date):
+        temp_user = self.get_user(user)
+        temp_movie = self.get_movie_by_name(movie, date)
+        temp_user.user_watchlist.remove_movie(temp_movie)
+
 
 
 def read_csv_file(filename: str):
@@ -154,7 +168,7 @@ def load_users(data_path: str, repo: MemoryRepository):
 
     for data_row in read_csv_file(os.path.join(data_path, 'users.csv')):
         user = User(
-            username=data_row[1],
+            user_name=data_row[1],
             password=generate_password_hash(data_row[2])
         )
         repo.add_user(user)
@@ -166,5 +180,4 @@ def populate(data_path: str, repo: MemoryRepository):
     # Loading all movies, directors and actors
     load_movies(data_path, repo)
     load_users(data_path, repo)
-    users = load_users(data_path, repo)
 

@@ -9,7 +9,7 @@ class User:
         self._reviews = []
         self._time_spent_watching_movies_minutes = 0
         self._user_watchlist = WatchList()
-        WatchList.set_owner(self)
+        '''WatchList.set_owner(self)'''
 
     @property
     def user_name(self):
@@ -41,7 +41,7 @@ class User:
     def __eq__(self, other_user) -> bool:
         if not isinstance(other_user, User):
             return False
-        return other_user._user_name == self._user_name
+        return other_user._user_name.strip().lower() == self._user_name.strip().lower()
 
     def __lt__(self, other_user):
         return self._user_name < other_user._user_name
@@ -367,7 +367,6 @@ class Director:
 class WatchList:
     def __init__(self):
         self._watch_list = []
-        self._owner = None
 
     @property
     def watchlist(self):
@@ -381,11 +380,6 @@ class WatchList:
         if movie in self._watch_list:
             self._watch_list.remove(movie)
 
-    def set_owner(self, user):
-        self._owner = user
-
-    def get_owner(self):
-        return self._owner
 
     def select_movie_to_watch(self, index):
         if index in range(len(self._watch_list)):
