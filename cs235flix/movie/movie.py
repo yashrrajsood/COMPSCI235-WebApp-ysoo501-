@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, url_for
+from werkzeug.utils import redirect
 
 import cs235flix.utilities.utilities as utilities
+from cs235flix.authentication.authentication import login_required
 
 movie_blueprint = Blueprint('movie_bp', __name__)
 
@@ -17,31 +19,27 @@ def load_movie():
 
 
 @movie_blueprint.route("/add_to_watchlist/")
+@login_required
 def add_movie_to_watchlist():
     user_watchlist = load_user_and_watchlist()
     user = str(session['username'])
     movie = request.args.get('title')
     date = request.args.get('date')
     utilities.add_movie_to_watchlist(user, movie, date)
-    return render_template('movies/movies.html'
-                           , movie=utilities.get_movie_from_title(str(movie), int(date))
-                           , user_watchlist=user_watchlist
-                           )
-    # return render_template('watchlist/watchlist.html')
+
+    return redirect(request.referrer)
 
 
 @movie_blueprint.route("/removed_from_watchlist/")
+@login_required
 def remove_movie_from_watchlist():
     user_watchlist = load_user_and_watchlist()
     user = str(session['username'])
     movie = request.args.get('title')
     date = request.args.get('date')
     utilities.remove_movie_from_watchlist(user, movie, date)
-    return render_template('movies/movies.html'
-                           , movie=utilities.get_movie_from_title(str(movie), int(date))
-                           , user_watchlist=user_watchlist
-                           )
-    # return render_template('watchlist/watchlist.html')
+
+    return redirect(request.referrer)
 
 
 def load_user_and_watchlist():

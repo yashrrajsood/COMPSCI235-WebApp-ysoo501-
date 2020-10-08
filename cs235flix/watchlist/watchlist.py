@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, session
 
 import cs235flix.utilities.utilities as utilities
-
+from cs235flix.authentication.authentication import login_required
 
 watchlist_blueprint = Blueprint('watchlist_bp', __name__)
 
 
 @watchlist_blueprint.route('/watchlist')
+@login_required
 def get_user_watchlist():
     username = str(session['username'])
     user_watchlist = utilities.get_user_watchlist(username)
