@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 
 class User:
@@ -133,14 +133,15 @@ class Genre:
 
 
 class Review:
-    def __init__(self, movie, review_text: str, rating: int):
+    def __init__(self, movie, review_text: str, rating: int, user: User):
         self._movie = movie
         self._review_text = review_text
-        if 0 < rating < 10:
+        if 0 <= rating <= 10:
             self._rating = rating
         else:
             self._rating = None
         self._timestamp = datetime.datetime.now()
+        self._review_user = user
 
     @property
     def movie(self):
@@ -176,6 +177,7 @@ class Movie:
 
         self._actors = []
         self._genres = []
+        self._reviews = []
         self._description = description
         self._runtime_minutes = run_time
         self._rating = rating
@@ -288,6 +290,10 @@ class Movie:
     def genres(self):
         return self._genres
 
+    @property
+    def reviews(self):
+        return self._reviews
+
     '''
     @genres.setter
     def genres(self, val):
@@ -379,7 +385,6 @@ class WatchList:
     def remove_movie(self, movie):
         if movie in self._watch_list:
             self._watch_list.remove(movie)
-
 
     def select_movie_to_watch(self, index):
         if index in range(len(self._watch_list)):

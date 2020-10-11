@@ -74,3 +74,13 @@ def get_user(username):
 
 def remove_movie_from_watchlist(user, movie, date):
     services.remove_movie_from_watchlist(repo.repo_instance, user, movie, date)
+
+
+def add_review(user, review_text, movie, date, rating):
+    services.add_review(repo.repo_instance, user, review_text, movie, date, int(rating))
+
+
+def get_reviews_for_movie(movie, date):
+    review_list = services.get_reviews_for_movie(repo.repo_instance, movie, date)
+    return review_list
+

@@ -1,6 +1,8 @@
 
 {% extends 'layout.html' %} {% block content %}
 <main id="main">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo:700&display=swap" rel="stylesheet">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,900&display=swap');
@@ -84,6 +86,44 @@
         margin-right: 30px;
     }
 
+    #review_button{
+        margin-left: 30px;
+    }
+
+    #noo {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   }
+   * {
+      box-sizing: border-box;
+   }
+   .rrcard {
+      color: white;
+      float: left;
+      width: calc(25% - 20px);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px;
+      height: 200px;
+   }
+   .rrcard p {
+      font-size: 18px;
+   }
+   .rrcardContainer:after {
+      content: "";
+      display: table;
+      clear: both;
+   }
+   @media screen and (max-width: 600px) {
+      .rrcard {
+         width: 100%;
+      }
+   }
+
+
+
+
+
+
     </style>
     <body>
         {% if movie != None %}
@@ -114,9 +154,21 @@
             {%endfor%}
             <hr>
             <br/>
+
         {%endif%}
         </div>
+        <button id="review_button" class="btn-general" onclick="location.href='{{ url_for('movie_bp.add_review', movie_title=movie.title, movie_date=movie.release_date) }}'">Add a Review</button>
+        <br/><br/><br/>
 
+
+        {% for review in movie_reviews %}
+        <div id="noo">
+            <div class="rrcard" style="background-color:rgb(60, 63, 82);">
+                <h2>{{review.rating}}/10</h2>
+                <p>{{review.review_text}}</p>
+            </div>
+        </div>
+        {%endfor%}
     </body>
 </main>
 {% endblock %}

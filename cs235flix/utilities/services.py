@@ -52,7 +52,7 @@ def get_movies_by_director(repo: AbstractRepository, name):
 
 
 def get_user_watchlist(repo: AbstractRepository, user):
-    watch_list = repo.get_user(user)._user_watchlist.watchlist
+    watch_list = repo.get_user(user).user_watchlist.watchlist
     return watch_list
 
 
@@ -67,3 +67,12 @@ def get_user(repo: AbstractRepository, username):
 
 def remove_movie_from_watchlist(repo: AbstractRepository, user, movie, date):
     repo.remove_movie_from_watchlist(user, movie, date)
+
+
+def add_review(repo: AbstractRepository, user, review_text, movie, date, rating):
+    repo.add_review(user, review_text, movie, date, rating)
+
+
+def get_reviews_for_movie(repo: AbstractRepository, movie, date):
+    review_list = repo.get_reviews_for_movie(str(movie), int(date))
+    return review_list

@@ -2,9 +2,10 @@ import csv
 import os
 
 from cs235flix.adapters.repository import AbstractRepository, RepositoryException
-from cs235flix.domain.model import User, Actor, Genre, Movie, Director
+from cs235flix.domain.model import User, Actor, Genre, Movie, Director, Review
 
 from werkzeug.security import generate_password_hash
+
 
 class MemoryRepository(AbstractRepository):
 
@@ -14,6 +15,7 @@ class MemoryRepository(AbstractRepository):
         self._genres = list()
         self._directors = set(list())
         self._actors = set(list())
+        self._reviews = list()
 
     def add_user(self, user: User):
         self._users.append(user)
@@ -105,6 +107,21 @@ class MemoryRepository(AbstractRepository):
         temp_movie = self.get_movie_by_name(movie, date)
         temp_user.user_watchlist.remove_movie(temp_movie)
 
+    def add_review(self, user, review_text, movie, date, rating):
+        temp_movie = self.get_movie_by_name(movie, date)
+        temp_user = self.get_user(user)
+        temp_review = Review(temp_movie, review_text, rating, temp_user)
+        self._reviews.append(temp_review)
+        temp_movie.reviews.append(temp_review)
+        #temp_user.reviews.append(temp_review)
+
+    def get_reviews_for_movie(self, movie, date):
+        temp_movie = self.get_movie_by_name(movie, date)
+        temp_list = []
+        for review in self._reviews:
+            if review.movie == temp_movie:
+                temp_list.append(review)
+        return temp_list
 
 
 def read_csv_file(filename: str):
@@ -163,6 +180,7 @@ def load_movies(data_path: str, repo: MemoryRepository):
 
         repo.add_movie(movie)
 
+
 def load_users(data_path: str, repo: MemoryRepository):
     users = dict()
 
@@ -180,4 +198,3 @@ def populate(data_path: str, repo: MemoryRepository):
     # Loading all movies, directors and actors
     load_movies(data_path, repo)
     load_users(data_path, repo)
-
