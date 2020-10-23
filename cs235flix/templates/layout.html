@@ -119,7 +119,7 @@
   }
 
   #login_message {
-    margin-left: 600px;
+    margin-left: 500px;
     color:white;
     background: #333;
   }
@@ -206,7 +206,7 @@
       <a href={{ url_for('home_bp.all_movies') }}>All Movies</a>
       <a href={{ url_for('genre_bp.get_list_of_genres') }}>Genres</a>
 
-
+      <a href="/search">Search</a>
       {% if 'username' in session %}
       <a href="/watchlist">Watchlist</a>
       <a id="login_message">Logged in, {{ session['username'] }}</a>

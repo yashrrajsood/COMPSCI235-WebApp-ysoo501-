@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request
 import cs235flix.utilities.utilities as utilities
 
 home_blueprint = Blueprint(
-    'home_bp', __name__, url_prefix='/home')
+    'home_bp', __name__, url_prefix='')
 
 
 @home_blueprint.route('/', methods=['GET'])

@@ -18,7 +18,6 @@ def create_app(test_config=None):
     app.config.from_object('config.Config')
     data_path = os.path.join('cs235flix', 'adapters', 'data')
 
-
     if test_config is not None:
         # Load test configuration, and override any configuration settings.
         app.config.from_mapping(test_config)
@@ -51,5 +50,8 @@ def create_app(test_config=None):
 
         from .watchlist import watchlist
         app.register_blueprint(watchlist.watchlist_blueprint)
+
+        from.search import search
+        app.register_blueprint(search.search_blueprint)
 
     return app
