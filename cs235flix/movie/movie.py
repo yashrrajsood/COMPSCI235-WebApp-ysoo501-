@@ -91,7 +91,7 @@ def add_review():
 
 class ReviewForm(FlaskForm):
     """Review form."""
-    review_text = StringField('Review Text', [DataRequired()])
+    review_text = StringField('Review Text', [DataRequired(), Length(max=200)])
     rating = StringField('Rating (1-10)', [DataRequired()])
     movie = HiddenField("Movie Name")
     movie_date = HiddenField("Movie Date")

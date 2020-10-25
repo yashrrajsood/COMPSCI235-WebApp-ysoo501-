@@ -1,199 +1,197 @@
 {% extends 'layout.html' %} {% block content %}
 <main id="main">
     <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;400&display=swap');
         * {
-  box-sizing: border-box;
-}
+          box-sizing: border-box;
+        }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
 
-h4 {
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-}
+        h4 {
+          font-family: 'Inter', sans-serif;
+          font-size: 20px;
+        }
 
-h1 {
-    margin-left: 30px;
-}
+        h1 {
+            margin-left: 30px;
+        }
 
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 25%;
-  padding: 0 10px;
-}
+        /* Float four columns side by side */
+        .column {
+          float: left;
+          width: 25%;
+          padding: 0 10px;
+        }
 
-/* Remove extra left and right margins, due to padding in columns */
-.row {margin: 0 -5px;}
+        /* Remove extra left and right margins, due to padding in columns */
+        .row {margin: 0 -5px;}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
 
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  margin-top: 20px;
-}
+        /* Style the counter cards */
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+          padding: 16px;
+          text-align: center;
+          background-color: #f1f1f1;
+          margin-top: 20px;
+        }
 
-.card p {
-    font-size: 13px;
-}
+        .card p {
+            font-size: 13px;
+        }
 
-.card:hover {
-  background-color: #ddd;
-}
+        .card:hover {
+          background-color: #ddd;
+        }
 
-.card a{
-    font-family: 'Inter', sans-serif;
-    text-decoration:none
-}
+        .card a{
+            font-family: 'Inter', sans-serif;
+            text-decoration:none
+        }
 
-.card a:visited {
-    color: black;
-}
+        .card a:visited {
+            color: black;
+        }
 
-.card a:link {
-    color: black;
-}
+        .card a:link {
+            color: black;
+        }
 
-/* Style the genre cards */
-.card2 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-  margin-top: 20px;
-  border-radius: 70px;
-}
+        /* Style the genre cards */
+        .card2 {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+          padding: 16px;
+          text-align: center;
+          background-color: #f1f1f1;
+          margin-top: 20px;
+          border-radius: 70px;
+        }
 
-.card2 p {
-    font-size: 13px;
-}
+        .card2 p {
+            font-size: 13px;
+        }
 
-.card2:hover {
-  background-color: #ddd;
-}
+        .card2:hover {
+          background-color: #ddd;
+        }
 
-.card2 a{
-    font-family: 'Inter', sans-serif;
-    text-decoration:none
-}
+        .card2 a{
+            font-family: 'Inter', sans-serif;
+            text-decoration:none
+        }
 
-.card2 a:visited {
-    color: black;
-}
+        .card2 a:visited {
+            color: black;
+        }
 
-.card2 a:link {
-    color: black;
-}
-
-
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-#genre_title {
-    margin-top: 30px;
-    padding-top: 30px;
-    display: block;
-}
-
-#divid {
-    margin-top:30px
-    display: inline-block;
+        .card2 a:link {
+            color: black;
+        }
 
 
-}
+        /* Responsive columns - one column layout (vertical) on small screens */
+        @media screen and (max-width: 600px) {
+          .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+          }
+        }
 
-#divider_box {
-    text-align: center;
-    vertical-align: middle;
-    margin-top: 30px;
-    float: right;
-    margin-right: 70px;
-    border: 4px solid #333;
-    width: 120px;
-}
+        #genre_title {
+            margin-top: 30px;
+            padding-top: 30px;
+            display: block;
+        }
 
-#divider_box p {
-    color: black;
-}
+        #divid {
+            margin-top:30px
+            display: inline-block;
 
-#divider_box a {
-    text-decoration: none;
-}
 
-#divider_box:hover {
-  background-color: #333;
-  color:#333;
-  text-color: white;
+        }
 
-}
+        #divider_box {
+            text-align: center;
+            vertical-align: middle;
+            margin-top: 30px;
+            float: right;
+            margin-right: 70px;
+            border: 4px solid #333;
+            width: 120px;
+        }
 
-#divider_box p:hover {
-  color: white;
+        #divider_box p {
+            color: black;
+        }
 
-}
+        #divider_box a {
+            text-decoration: none;
+        }
 
-#divid p {
-    color: white;
+        #divider_box:hover {
+          background-color: #333;
+          color:#333;
+          text-color: white;
 
-}
+        }
 
-</style>
-  <h1>Top Movies</h1>
+        #divider_box p:hover {
+          color: white;
 
-    {% for i in range(0,8) %}
-        <div class="column">
-            <div class="card">
-                <h4>
-                    <a href="/movie?title={{all_movies[i]._title}}&date={{all_movies[i]._release_date}}">
-                    {{ all_movies[i]._title }}
-                    <p>({{ all_movies[i]._release_date }})</p>
-                    </a>
-                </h4>
+        }
+
+        #divid p {
+            color: white;
+
+        }
+    </style>
+    <body>
+        <h1>Top Movies</h1>
+
+        {% for i in range(0,8) %}
+            <div class="column">
+                <div class="card">
+                    <h4>
+                        <a href="/movie?title={{all_movies[i]._title}}&date={{all_movies[i]._release_date}}">
+                        {{ all_movies[i]._title }}
+                        <p>({{ all_movies[i]._release_date }})</p>
+                        </a>
+                    </h4>
+                </div>
+                </div>
             </div>
+        {% endfor %}
+
+        <p></p>
+        <div id="divider_box"><a href={{ url_for('home_bp.all_movies') }}><p>Show More</p></a></div>
+        <div id="divid"><p>.</p><p>.</p></div>
+
+        <h1 id="genre_title">Genres</h1>
+        {% for i in range(0, 4) %}
+            <div class="column">
+                <div class="card2">
+                    <h4>
+                        <a href="/genre_movie?genre={{genre_list[i].genre_name}}">
+                        {{ genre_list[i].genre_name }}
+                        </a>
+                    </h4>
+                </div>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-
-    <p></p>
-    <div id="divider_box"><a href={{ url_for('home_bp.all_movies') }}><p>Show More</p></a></div>
-    <div id="divid"><p>.</p><p>.</p></div>
-
-    <h1 id="genre_title">Genres</h1>
-    {% for i in range(0, 4) %}
-        <div class="column">
-            <div class="card2">
-                <h4>
-                    <a href="/genre_movie?genre={{genre_list[i].genre_name}}">
-                    {{ genre_list[i].genre_name }}
-                    </a>
-                </h4>
-            </div>
-            </div>
-        </div>
-    {% endfor %}
-
-    <p></p>
-    <div id="divider_box"><a href={{ url_for('genre_bp.get_list_of_genres') }}><p>Show More</p></a></div>
-    <div id="divid"><p>.</p><p>.</p></div>
-
+        {% endfor %}
+        <p></p>
+        <div id="divider_box"><a href={{ url_for('genre_bp.get_list_of_genres') }}><p>Show More</p></a></div>
+        <div id="divid"><p>.</p><p>.</p></div>
+    </body>
 </main>
 {% endblock %}

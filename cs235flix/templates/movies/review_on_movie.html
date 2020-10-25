@@ -8,15 +8,15 @@
         <p>Review by: {{session['username']}}</p>
         <div class="form-wrapper">
             <form action="{{handler_url}}" method="post">
-                {{form.movie}} <!-- Need to include this hidden field as it tracks the article being commented. -->
+                {{form.movie}}
                 {{form.movie_date}}
                 {{form.username}}
-                {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+                {{form.csrf_token}}
                 <br>
-                <div class ="form-field">{{form.review_text.label}} </br>{{form.review_text(size = 100, placeholder="enter your review comment", class="textarea", cols="50", rows="10", wrap="hard", id="review_textbox")}}
+                <div class ="form-field">{{form.review_text.label}} </br>{{form.review_text(size = 100, placeholder="enter your review", class="textarea", cols="50", rows="10", wrap="hard", id="review_textbox")}}
                     {% if form.review_text.errors %}
                         <ul class="errors">
-        	            {% for error in form.comment.errors %}
+        	            {% for error in form.review_text.errors %}
         		            <li>{{error}}</li>
                         {% endfor %}
                         </ul>
@@ -24,9 +24,9 @@
                 </div>
                 <br/>
                 <div class ="form-field">{{form.rating.label}} </br>{{form.rating(size = 100, placeholder="enter a rating between 1-10", class="textarea", cols="50", rows="6", wrap="hard")}}
-                    {% if form.review_text.errors %}
+                    {% if form.rating.errors %}
                         <ul class="errors">
-        	            {% for error in form.comment.errors %}
+        	            {% for error in form.rating.errors %}
         		            <li>{{error}}</li>
                         {% endfor %}
                         </ul>
