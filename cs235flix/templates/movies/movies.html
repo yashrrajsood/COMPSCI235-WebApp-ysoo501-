@@ -70,9 +70,7 @@
             margin-bottom: 20px;
           }
         }
-        #genre_list {
 
-        }
 
         #watchlist_button_add {
             float: right;
@@ -137,10 +135,17 @@
            margin-top: -42px;
            margin-bottom: 20px;
        }
+       #actor_section {
+           margin-left: 200px;
+           margin-top: -177px
+       }
+       #director_name {
+           margin-left: 30px
+       }
+
     </style>
     <body>
         {% if movie != None %}
-
             <h1>{% print(movie.title) %}</h1>
             {% if 'username' in session and temp_watchlist != None%}
                 {% if movie not in user_watchlist %}
@@ -157,19 +162,38 @@
             <hr>
             <h5>Description:</h5>
             <p>{% print(movie.description) %}</p>
+            <h5>Director: </h5>
+            <p id="director_name">{% print(movie.director.director_full_name) %}</p>
+            <h5>Metascore: </h5>
+            <p>{% print(movie.metascore) %}</p>
+            <h5>Runtime: </h5>
+            <p>{% print(movie.runtime_minutes) %} minutes</p>
+            <h5>Revenue: </h5>
+            <p>{% print(movie.revenue) %} Million ($USD)</p>
         <div id="genre_section">
             <h5>Genres:</h5>
             {% for element in movie.genres %}
                 <a href="/genre_movie?genre={{element.genre_name}}">
+                <p>{%print(element._name)%}</p>
+                </a>
+                <br/>
+            {%endfor%}
+            </div>
+        <div id="actor_section">
+            <h5>Actors:</h5>
+            {% for element in movie.actors %}
+                <a href="/actor_movies?actor={{element._name}}">
                 <p id="genre_list">{%print(element._name)%}</p>
                 </a>
                 <br/>
             {%endfor%}
-            <hr>
+
             <br/>
+            </div>
+            <hr>
 
         {%endif%}
-        </div>
+
         <a id="review_button" href="/review?movie_title={{movie.title}}&movie_date={{movie.release_date}}">
                         <img alt="Remove From Watchlist" src="/static/images/add_review.png" width=240" height="50">
                     </a>
