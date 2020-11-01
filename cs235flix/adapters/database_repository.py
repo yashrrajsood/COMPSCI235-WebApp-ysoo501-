@@ -206,7 +206,7 @@ def movie_record_generator(filename: str):
 
             yield movie_data
 
-
+    '''
 def movie_actors_generator():
     article_tags_key = 0
     tag_key = 0
@@ -216,7 +216,7 @@ def movie_actors_generator():
         for article_key in tags[tag]:
             article_tags_key = article_tags_key + 1
             yield article_tags_key, article_key, tag_key
-
+    '''
 
 def generic_generator(filename, post_process=None):
     with open(filename) as infile:
@@ -248,7 +248,7 @@ def populate(engine: Engine, data_path: str):
         INSERT INTO movies (
         Rank, Title, Genre, Description, Director, Actors, Year, Runtime, Rating, Votes, Revenue, Metascore)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-    cursor.executemany(insert_movies, movie_actors_generator(os.path.join(data_path, 'Data1000Movies.csv')))
+    cursor.executemany(insert_movies)
 
     insert_users = """
         INSERT INTO users (
